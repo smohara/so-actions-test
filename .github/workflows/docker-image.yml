@@ -42,25 +42,28 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   deploy-development:
+    needs: build
     runs-on: ubuntu-latest
     environment: development
 
     steps:
-      name: deploy-development
+    - name: deploy-development
       run: echo 'Deploying Development'
 
   deploy-pre-production:
+    needs: deploy-development
     runs-on: ubuntu-latest
     environment: pre-production
 
     steps:
-      name: deploy-development
+    - name: deploy-development
       run: echo 'Deploying Pre-Production'
 
   deploy-production:
+    needs: deploy-pre-production
     runs-on: ubuntu-latest
     environment: production
 
     steps:
-      name: deploy-production
+    - name: deploy-production
       run: echo 'Deploying Production'
