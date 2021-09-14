@@ -40,3 +40,27 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  deploy-development:
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      name: deploy-development
+      run: echo 'Deploying Development'
+
+  deploy-pre-production:
+    runs-on: ubuntu-latest
+    environment: pre-production
+
+    steps:
+      name: deploy-development
+      run: echo 'Deploying Pre-Production'
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      name: deploy-production
+      run: echo 'Deploying Production'
