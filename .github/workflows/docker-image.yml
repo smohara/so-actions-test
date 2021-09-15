@@ -45,6 +45,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     environment: development
+    if: success() && github.ref == 'refs/heads/master'
 
     steps:
     - name: deploy-development
@@ -54,6 +55,7 @@ jobs:
     needs: deploy-development
     runs-on: ubuntu-latest
     environment: pre-production
+    if: success() && github.ref == 'refs/heads/master'
 
     steps:
     - name: deploy-development
@@ -63,6 +65,7 @@ jobs:
     needs: deploy-pre-production
     runs-on: ubuntu-latest
     environment: production
+    if: success() && github.ref == 'refs/heads/master'
 
     steps:
     - name: deploy-production
